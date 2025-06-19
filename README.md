@@ -1,3 +1,5 @@
+Demo : https://pixvista.netlify.app/ 
+
 # 📸 Pixvista
 
 Pixvista is a modern social media platform that allows users to upload posts and like others' content. Built with a sleek and responsive UI, it offers a simple and engaging user experience.
