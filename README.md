@@ -1,10 +1,6 @@
-<img width="2880" height="1344" alt="image" src="https://github.com/user-attachments/assets/f336215d-70f2-47e1-ac71-b7321d18c3c6" />
-<img width="2878" height="1356" alt="image" src="https://github.com/user-attachments/assets/2df5cacc-d029-4cd5-b3ec-3d53eff113d6" />
-<img width="2880" height="1356" alt="image" src="https://github.com/user-attachments/assets/47e9c9bd-cc20-4c58-9bef-2f1adb7eb4c6" />
-<img width="2880" height="1344" alt="image" src="https://github.com/user-attachments/assets/e9d3fdc1-3f7d-4f11-8750-d7d32dd18421" />
-<img width="2880" height="1352" alt="image" src="https://github.com/user-attachments/assets/a864fc2f-0e68-4abd-bdbc-b689ac79cd9e" />
-<img width="2880" height="1352" alt="image" src="https://github.com/user-attachments/assets/65597ea4-16ab-4c6c-beee-1f3857b47bd9" />
-<img width="2880" height="1352" alt="image" src="https://github.com/user-attachments/assets/f859f4b6-d052-4939-901f-bf2707172e75" />
+<!-- Elfsight Slider | Untitled Slider -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-c14f774d-6a41-4766-80d1-d54124bc503e" data-elfsight-app-lazy></div>
 
 
 
