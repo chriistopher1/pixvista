@@ -1,7 +1,4 @@
 <!-- Elfsight Slider | Untitled Slider -->
-<div class="elfsight-app-c14f774d-6a41-4766-80d1-d54124bc503e" data-elfsight-app-lazy></div>
-
-
 
 # PixVista
 PIXVISTA DEMO ( VIDEO ) : https://jumpshare.com/share/zeCIhv12CWVzNe2pnDJE
