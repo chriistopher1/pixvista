@@ -1,12 +1,11 @@
-import { LuHome } from "react-icons/lu";
-import { MdOutlineExplore } from "react-icons/md";
+import { MdHome, MdOutlineExplore } from "react-icons/md";
 import { IoPeopleOutline } from "react-icons/io5";
 import { FaRegBookmark } from "react-icons/fa6";
 import { RiGalleryFill } from "react-icons/ri";
 
 export const sidebarLinks = [
   {
-    imgURL: <LuHome className="custom-icon" />,
+    imgURL: <MdHome className="custom-icon" />,
     route: "/",
     label: "Home",
   },
@@ -34,7 +33,7 @@ export const sidebarLinks = [
 
 export const bottombarLinks = [
   {
-    imgURL: <LuHome className="custom-icon" />,
+    imgURL: <MdHome className="custom-icon" />,
     route: "/",
     label: "Home",
   },

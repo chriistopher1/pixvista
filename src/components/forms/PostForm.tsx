@@ -1,5 +1,4 @@
 import * as z from "zod";
-import { Models } from "appwrite";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,11 +22,10 @@ import { useUserContext } from "@/context/AuthContext";
 import FileUploader from "../shared/FileUploader";
 import Loader from "../shared/Loader";
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queries";
-
-// import { useCreatePost, useUpdatePost } from "@/lib/react-query/queries";
+import { IPost } from "@/types";
 
 type PostFormProps = {
-  post?: Models.Document;
+  post?: IPost;
   action: "Create" | "Update";
 };
 
@@ -122,7 +120,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <FormControl>
                 <FileUploader
                   fieldChange={field.onChange}
-                  mediaUrl={post?.imageUrl}
+                  mediaUrl={post?.imageUrl || ""}
                 />
               </FormControl>
               <FormMessage className="shad-form_message" />

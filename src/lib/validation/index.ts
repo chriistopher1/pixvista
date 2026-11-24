@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import { isEmailAvailable } from "../appwrite/api";
+import { isEmailAvailable } from "../api/api";
 
 export const signUpValidation = z.object({
   name: z.string().min(2, { message: "*Must be at least 2 characters." }),

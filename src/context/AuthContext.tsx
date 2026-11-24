@@ -1,9 +1,9 @@
-// import { useNavigate } from "react-router-dom";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { IUser } from "@/types";
-import { getCurrentUser } from "@/lib/appwrite/api";
-import { useNavigate } from "react-router-dom";
+import { getCurrentUser } from "@/lib/api/api";
+import { getToken } from "@/lib/api/config";
 
 export const INITIAL_USER = {
   accountId: "",
@@ -17,7 +17,7 @@ export const INITIAL_USER = {
 const INITIAL_STATE = {
   user: INITIAL_USER,
   isLoading: false,
-  isAuthenticated: true,
+  isAuthenticated: false,
   setUser: () => {},
   setIsAuthenticated: () => {},
   checkAuthUser: async () => false as boolean,
@@ -44,6 +44,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const checkAuthUser = async () => {
     setIsLoading(true);
     try {
+      if (!getToken()) {
+        setIsAuthenticated(false);
+        return false;
+      }
+
       const currentAuthenticatedUser = await getCurrentUser();
 
       if (currentAuthenticatedUser != null) {
@@ -56,13 +61,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           email: currentAuthenticatedUser.email,
         });
         setIsAuthenticated(true);
-
         return true;
       }
 
+      setIsAuthenticated(false);
       return false;
     } catch (error) {
       console.log(error);
+      setIsAuthenticated(false);
       return false;
     } finally {
       setIsLoading(false);
@@ -70,16 +76,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    const cookieFallback = localStorage.getItem("cookieFallback");
-    if (
-      cookieFallback === "[]" ||
-      cookieFallback === null ||
-      cookieFallback === undefined
-    ) {
-      navigate("/signIn");
-    }
+    const bootstrap = async () => {
+      const token = getToken();
+      if (!token) {
+        navigate("/signIn");
+        return;
+      }
 
-    checkAuthUser();
+      const ok = await checkAuthUser();
+      if (!ok) {
+        navigate("/signIn");
+      }
+    };
+
+    bootstrap();
   }, []);
 
   const value = {

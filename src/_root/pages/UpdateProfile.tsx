@@ -71,9 +71,9 @@ const UpdateProfile = () => {
 
     setUser({
       ...user,
-      name: updatedUser?.name,
-      bio: updatedUser?.bio,
-      imageUrl: updatedUser?.imageUrl,
+      name: updatedUser?.name || user.name,
+      bio: updatedUser?.bio || user.bio,
+      imageUrl: updatedUser?.imageUrl || user.imageUrl,
     });
     return navigate(`/profile/${id}`);
   };

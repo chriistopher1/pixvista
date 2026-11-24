@@ -3,7 +3,7 @@ import { useGetRecentPosts, useGetUsers } from "@/lib/react-query/queries";
 import Loader from "@/components/shared/Loader";
 import UserCard from "@/components/shared/UserCard";
 import PostCard from "@/components/shared/PostCard";
-import { Models } from "appwrite";
+import { IPost } from "@/types";
 
 import { useGetCurrentUser } from "@/lib/react-query/queries";
 
@@ -43,7 +43,7 @@ const Home = () => {
             <Loader />
           ) : (
             <ul className="flex flex-col flex-1 gap-9 w-full ">
-              {posts?.documents.map((post: Models.Document) => (
+              {posts?.documents.map((post: IPost) => (
                 <li key={post.$id} className="flex justify-center w-full">
                   {currentUser ? (
                     <PostCard post={post} userDocumentId={currentUser.$id} />

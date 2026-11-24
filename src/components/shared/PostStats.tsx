@@ -1,7 +1,5 @@
 import { FaHeart } from "react-icons/fa6";
 import { FaBookmark } from "react-icons/fa";
-
-import { Models } from "appwrite";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -12,15 +10,15 @@ import {
   useDeleteSavedPost,
   useGetCurrentUser,
 } from "@/lib/react-query/queries";
-import { IconNode } from "lucide-react";
+import { IPost, ISaveRecord, IUserDocument } from "@/types";
 
 type PostStatsProps = {
-  post: Models.Document;
+  post: IPost;
 };
 
 const PostStats = ({ post }: PostStatsProps) => {
   const location = useLocation();
-  const likesList = post.likes.map((user: Models.Document) => user.$id);
+  const likesList = (post.likes || []).map((user: IUserDocument) => user.$id);
 
   const [likes, setLikes] = useState<string[]>(likesList);
   const [isSaved, setIsSaved] = useState(false);
@@ -31,17 +29,15 @@ const PostStats = ({ post }: PostStatsProps) => {
 
   const { data: currentUser } = useGetCurrentUser();
 
-  const savedPostRecord = currentUser?.save.find(
-    (record: Models.Document) => record.post.$id === post.$id
+  const savedPostRecord = currentUser?.save?.find(
+    (record: ISaveRecord) => record.post.$id === post.$id
   );
 
   useEffect(() => {
     setIsSaved(!!savedPostRecord);
   }, [currentUser]);
 
-  const handleLikePost = (
-    e: React.MouseEvent<IconNode, MouseEvent>
-  ) => {
+  const handleLikePost = (e: React.MouseEvent) => {
     e.stopPropagation();
 
     let likesArray = [...likes];
@@ -50,18 +46,15 @@ const PostStats = ({ post }: PostStatsProps) => {
       if (likesArray.includes(currentUser.$id)) {
         likesArray = likesArray.filter((Id) => Id !== currentUser.$id);
       } else {
-        likesArray.push(currentUser?.$id);
+        likesArray.push(currentUser.$id);
       }
     }
-    // console.log(likesArray);
-    
+
     setLikes(likesArray);
     likePost({ postId: post.$id, likesArray });
   };
 
-  const handleSavePost = (
-    e: React.MouseEvent<IconNode, MouseEvent>
-  ) => {
+  const handleSavePost = (e: React.MouseEvent) => {
     e.stopPropagation();
 
     if (savedPostRecord) {
@@ -83,10 +76,9 @@ const PostStats = ({ post }: PostStatsProps) => {
     >
       <div className="flex gap-2 mr-5">
         <FaHeart
-          alt="like"
           onClick={handleLikePost}
-          className={`${currentUser &&
-            checkIsLiked(likes, currentUser.$id)
+          className={`${
+            currentUser && checkIsLiked(likes, currentUser.$id)
               ? "text-red-700"
               : "text-white"
           } cursor-pointer text-xl`}
@@ -96,9 +88,10 @@ const PostStats = ({ post }: PostStatsProps) => {
 
       <div className="flex gap-2">
         <FaBookmark
-          className={`${isSaved ? "text-red-700" : "text-white"} cursor-pointer text-xl`}
+          className={`${
+            isSaved ? "text-red-700" : "text-white"
+          } cursor-pointer text-xl`}
           onClick={handleSavePost}
-
         />
       </div>
     </div>

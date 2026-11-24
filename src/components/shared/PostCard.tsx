@@ -1,13 +1,12 @@
 import { FaRegEdit } from "react-icons/fa";
-
-import { Models } from "appwrite";
 import { Link } from "react-router-dom";
 
 import PostStats from "./PostStats";
 import { multiFormatDateString } from "@/lib/utils";
+import { IPost } from "@/types";
 
 type PostCardProps = {
-  post: Models.Document;
+  post: IPost;
   userDocumentId: string;
 };
 
@@ -57,7 +56,7 @@ const PostCard = ({ post, userDocumentId }: PostCardProps) => {
         <div className="small-medium lg:base-medium py-5">
           <p>{post.caption}</p>
           <ul className="flex gap-1 mt-2">
-            {post.tags.map((tag: string, index: string) => (
+            {post.tags.map((tag: string, index: number) => (
               <li key={`${tag}${index}`} className="text-light-3 small-regular">
                 #{tag}
               </li>

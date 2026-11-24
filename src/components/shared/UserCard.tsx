@@ -1,10 +1,10 @@
-import { Models } from "appwrite";
 import { Link } from "react-router-dom";
 
 import { Button } from "../ui/button";
+import { IUserDocument } from "@/types";
 
 type UserCardProps = {
-  user: Models.Document;
+  user: IUserDocument;
 };
 
 const UserCard = ({ user }: UserCardProps) => {

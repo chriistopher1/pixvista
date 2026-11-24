@@ -27,7 +27,7 @@ export type IUpdatePost = {
   postId: string;
   caption: string;
   imageId: string;
-  imageUrl: URL;
+  imageUrl: URL | string;
   file: File[];
   location?: string;
   tags?: string;
@@ -47,4 +47,47 @@ export type INewUser = {
   email: string;
   username: string;
   password: string;
+};
+
+/** Shared document fields returned by the MySQL API (Appwrite-compatible shape) */
+export type ICreator = {
+  $id: string;
+  accountId: string;
+  name: string;
+  username: string;
+  imageUrl: string;
+};
+
+export type IPost = {
+  $id: string;
+  caption: string;
+  location: string;
+  tags: string[];
+  imageUrl: string;
+  imageId: string;
+  likes: IUserDocument[];
+  creator: ICreator;
+  $createdAt: string;
+  $updatedAt: string;
+};
+
+export type ISaveRecord = {
+  $id: string;
+  post: IPost;
+};
+
+export type IUserDocument = {
+  $id: string;
+  accountId: string;
+  name: string;
+  username: string;
+  email: string;
+  bio: string;
+  imageUrl: string;
+  imageId: string;
+  $createdAt?: string;
+  $updatedAt?: string;
+  posts?: IPost[];
+  save?: ISaveRecord[];
+  liked?: IPost[];
 };

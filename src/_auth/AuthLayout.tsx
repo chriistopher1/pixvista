@@ -1,7 +1,8 @@
 import { Outlet, Navigate } from "react-router-dom";
+import { getToken } from "@/lib/api/config";
 
 const AuthLayout = () => {
-  const isAuthenticated = true;
+  const isAuthenticated = Boolean(getToken());
 
   return (
     <>
@@ -17,7 +18,7 @@ const AuthLayout = () => {
             src="/assets/images/form-img.jpg"
             alt="logo"
             className="hidden xl:block w-1/2 object-cover bg-no-repeat"
-          ></img>
+          />
         </>
       )}
     </>

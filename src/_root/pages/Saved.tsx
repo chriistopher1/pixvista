@@ -1,18 +1,18 @@
-import { Models } from "appwrite";
-
 import GridPostList from "@/components/shared/GridPostList";
 import Loader from "@/components/shared/Loader";
 import { useGetCurrentUser } from "@/lib/react-query/queries";
 import { FaRegBookmark } from "react-icons/fa6";
+import { ISaveRecord } from "@/types";
 
 const Saved = () => {
   const { data: currentUser } = useGetCurrentUser();
 
-  const savePosts = currentUser?.save
-    .map((savePost: Models.Document) => ({
+  const savePosts = (currentUser?.save || [])
+    .map((savePost: ISaveRecord) => ({
       ...savePost.post,
       creator: {
-        imageUrl: currentUser.imageUrl,
+        ...savePost.post.creator,
+        imageUrl: currentUser?.imageUrl || savePost.post.creator.imageUrl,
       },
     }))
     .reverse();
