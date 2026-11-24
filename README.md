@@ -1,7 +1,4 @@
-<img width="2880" height="1344" alt="image" src="https://github.com/user-attachments/assets/f336215d-70f2-47e1-ac71-b7321d18c3c6" /># PixVista
-PIXVISTA DEMO ( VIDEO ) : https://jumpshare.com/share/zeCIhv12CWVzNe2pnDJE
-
-PIXVISTA IMAGES : 
+<img width="2880" height="1344" alt="image" src="https://github.com/user-attachments/assets/f336215d-70f2-47e1-ac71-b7321d18c3c6" />
 <img width="2878" height="1356" alt="image" src="https://github.com/user-attachments/assets/2df5cacc-d029-4cd5-b3ec-3d53eff113d6" />
 <img width="2880" height="1356" alt="image" src="https://github.com/user-attachments/assets/47e9c9bd-cc20-4c58-9bef-2f1adb7eb4c6" />
 <img width="2880" height="1344" alt="image" src="https://github.com/user-attachments/assets/e9d3fdc1-3f7d-4f11-8750-d7d32dd18421" />
@@ -9,6 +6,10 @@ PIXVISTA IMAGES :
 <img width="2880" height="1352" alt="image" src="https://github.com/user-attachments/assets/65597ea4-16ab-4c6c-beee-1f3857b47bd9" />
 <img width="2880" height="1352" alt="image" src="https://github.com/user-attachments/assets/f859f4b6-d052-4939-901f-bf2707172e75" />
 
+
+
+# PixVista
+PIXVISTA DEMO ( VIDEO ) : https://jumpshare.com/share/zeCIhv12CWVzNe2pnDJE
 Open-source Instagram-style social media **template**. Users can register, upload posts, like/save content, and browse profiles.
 
 **Stack:** React + Vite · Express · MySQL (XAMPP) · TanStack React Query · Tailwind CSS · shadcn/ui
